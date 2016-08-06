@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder {
 
@@ -14,7 +15,33 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		// $this->call('UserTableSeeder');
+		$this->checkForeignKeys(false);
+
+		$this->truncateTables(array(
+			'users',
+			'password_resets',
+			'tickets',
+			'ticket_votes',
+			'ticket_comments',
+		));
+
+		$this->checkForeignKeys(true);
+
+		$this->call('UserTableSeeder');
+	}
+
+	private function truncateTables(array $tables)
+	{
+		foreach ($tables as $table) {
+			DB::table($table)->truncate();
+		}
+	}
+
+	private function checkForeignKeys($check)
+	{
+		$check = $check ? '1' : '0';
+
+		DB::statement("SET FOREIGN_KEY_CHECKS = $check");
 	}
 
 }
