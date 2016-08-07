@@ -1,15 +1,15 @@
 <?php
 
-use TeachMe\Entities\TicketVote;
+use TeachMe\Entities\TicketLike;
 use Faker\Generator;
 
-class TicketVoteTableSeeder extends BaseSeeder
+class TicketLikeTableSeeder extends BaseSeeder
 {
-    protected $total = 500;
+    protected $total = 1400;
 
     public function getModel()
     {
-        return new TicketVote();
+        return new TicketLike();
     }
 
     public function getDummyData(Generator $faker, array $customValues = array())

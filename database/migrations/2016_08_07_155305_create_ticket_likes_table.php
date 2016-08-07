@@ -3,14 +3,14 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTicketVotesTable extends Migration
+class CreateTicketLikesTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up()
     {
-        Schema::create('ticket_votes', function (Blueprint $table) {
+        Schema::create('ticket_likes', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('user_id')->unsigned();
@@ -28,6 +28,6 @@ class CreateTicketVotesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ticket_votes');
+        Schema::drop('ticket_likes');
     }
 }
