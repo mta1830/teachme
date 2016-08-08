@@ -11,9 +11,30 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/',[
+  'as'   => 'ticket.latest',
+  'uses' => 'TicketController@latest'
+]);
 
-Route::get('home', 'HomeController@index');
+Route::get('/populares',[
+  'as'   => 'ticket.popular',
+  'uses' => 'TicketController@popular'
+]);
+
+Route::get('/pendientes',[
+  'as'   => 'ticket.open',
+  'uses' => 'TicketController@open'
+]);
+
+Route::get('/tutoriales',[
+  'as'   => 'ticket.closed',
+  'uses' => 'TicketController@closed'
+]);
+
+Route::get('/solicitud/{id}',[
+  'as'   => 'ticket.details',
+  'uses' => 'TicketController@details'
+]);
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
