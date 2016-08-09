@@ -145,6 +145,13 @@ return [
 		'TeachMe\Providers\EventServiceProvider',
 		'TeachMe\Providers\RouteServiceProvider',
 
+		/*
+		 * Personal service providers
+		 */
+		 'TeachMe\Providers\HtmlServiceProvider',
+		 #sustituyendo el provider de la clase vendor base
+		 #'Collective\Html\HtmlServiceProvider',
+
 	],
 
 	/*
@@ -192,6 +199,9 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+		'Form' => 'Collective\Html\FormFacade',
+    'Html' => 'Collective\Html\HtmlFacade',
 
 	],
 
