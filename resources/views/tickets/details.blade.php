@@ -5,10 +5,12 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <h2 class="title-show">
-                Magnam impedit voluptatibus architecto quidem iste eum ut.
-                <span class="label label-info absolute highlight">abierta</span>
+                {{ $ticket->title }}
+                @include('tickets.partials.status',$ticket)
 
             </h2>
+            <p class="date-t"><span class="glyphicon glyphicon-time"></span> {{ $ticket->created_at->format('d/m/Y h:ia') }}</p>
+            </p>
             <h4 class="label label-info news">
                 9 votos            </h4>
 

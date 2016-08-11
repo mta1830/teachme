@@ -2,9 +2,9 @@
 
 return array(
   'menu' => array(
-    'ticket.latest' => 'Pendientes',
-    'ticket.popular' => 'Populares',
-    'ticket.open'    => 'Abiertas',
-    'ticket.closed'  => 'Finalizadas',
+    'tickets.latest' => 'Pendientes',
+    //'tickets.popular' => 'Populares',
+    'tickets.open'    => 'Abiertas',
+    'tickets.closed'  => 'Finalizadas',
   )
 );

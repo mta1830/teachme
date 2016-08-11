@@ -2,6 +2,7 @@
 
 use TeachMe\Http\Requests;
 use TeachMe\Http\Controllers\Controller;
+use TeachMe\Entities\Ticket;
 
 use Illuminate\Http\Request;
 
@@ -9,7 +10,13 @@ class TicketController extends Controller {
 
 	public function latest()
 	{
-		return view('tickets.list');
+		//Trea todas los ticket ordenados por fecha
+		//$tickets = Ticket::orderBy('created_at','DESC')->get();
+
+		//Hace lo mismo que arriba pero incluye la paginación
+		$tickets = Ticket::orderBy('created_at','DESC')->paginate(10);
+
+		return view('tickets.list', compact('tickets'));
 	}
 
 	public function popular()
@@ -19,17 +26,26 @@ class TicketController extends Controller {
 
 	public function open()
 	{
-		return view('tickets.list');
+		$tickets = Ticket::where('status','open')
+											->orderBy('created_at','DESC')
+											->paginate(10);
+
+		return view('tickets.list', compact('tickets'));
 	}
 
 	public function closed()
 	{
-		return view('tickets.list');
+		$tickets = Ticket::where('status','closed')
+											->orderBy('created_at','DESC')
+											->paginate(10);
+
+		return view('tickets.list', compact('tickets'));
 	}
 
 	public function details($id)
 	{
-		return view('tickets.details');
+		$ticket = Ticket::findOrFail($id);
+		return view('tickets.details',compact('ticket'));
 	}
 
 }

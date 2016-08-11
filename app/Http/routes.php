@@ -12,27 +12,27 @@
 */
 
 Route::get('/',[
-  'as'   => 'ticket.latest',
+  'as'   => 'tickets.latest',
   'uses' => 'TicketController@latest'
 ]);
 
 Route::get('/populares',[
-  'as'   => 'ticket.popular',
+  'as'   => 'tickets.popular',
   'uses' => 'TicketController@popular'
 ]);
 
 Route::get('/pendientes',[
-  'as'   => 'ticket.open',
+  'as'   => 'tickets.open',
   'uses' => 'TicketController@open'
 ]);
 
 Route::get('/tutoriales',[
-  'as'   => 'ticket.closed',
+  'as'   => 'tickets.closed',
   'uses' => 'TicketController@closed'
 ]);
 
 Route::get('/solicitud/{id}',[
-  'as'   => 'ticket.details',
+  'as'   => 'tickets.details',
   'uses' => 'TicketController@details'
 ]);
 
