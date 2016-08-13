@@ -6,14 +6,18 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="row">
                 <h1>
-                    Solicitudes Populares
+                    {{-- A través de currentRouteName va a retornarse la ruta de acceso a la página --}}
+                    {!! trans(Route::currentRouteName().'_title') !!}
                     <a href="#" class="btn btn-primary">
                         Nueva solicitud
                     </a>
                 </h1>
 
                 <p class="label label-info news">
-                    Hay {{ $tickets->total() }} Solicitudes Populares
+                    {{ Lang::choice(Route::currentRouteName().'_total', $tickets->total()) }}
+                    {{--
+                    Traer datos necesarios
+                    Hay {{ $tickets->total() }} Solicitudes Populares --}}
                 </p>
 
                 @foreach($tickets as $ticket)
