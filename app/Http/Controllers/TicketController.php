@@ -3,6 +3,7 @@
 use TeachMe\Http\Requests;
 use TeachMe\Http\Controllers\Controller;
 use TeachMe\Entities\Ticket;
+use TeachMe\Entities\TicketComment;
 
 use Illuminate\Http\Request;
 
@@ -45,7 +46,16 @@ class TicketController extends Controller {
 	public function details($id)
 	{
 		$ticket = Ticket::findOrFail($id);
-		return view('tickets.details',compact('ticket'));
+
+		//Para hacer un JOIN SQL desde laravel debemos
+		//$comments = TicketComment::select('ticket_comments.*','users.name')
+		//	->join('users','ticket_comments.user_id','=','users.id')
+		//	->where('ticket_id',$id)
+		//	->orderBy('created_at','DESC')
+		//	->get();
+		//Forma básica del ticket sin información del usuario
+		//$comments = TicketComment::where('ticket_id',$id)->orderBy('created_at','DESC')->get();
+		return view('tickets.details',compact('ticket','comments'));
 	}
 
 }
