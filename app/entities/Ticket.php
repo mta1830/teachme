@@ -6,9 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['title', 'status','ticket_category_id'];
+
     public function author()
     {
-      return $this->belongsTo(User::class);
+      return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function category()
+    {
+      return $this->belongsTo(TicketCategory::class, 'ticket_category_id');
     }
 
     public function comments()

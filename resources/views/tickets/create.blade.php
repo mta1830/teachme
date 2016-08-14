@@ -11,8 +11,21 @@
                   </h1>
               </div>
 
+              @include('partials.errors')
+
               {!! Form::open(['route' => 'tickets.store', 'method' => 'POST']) !!}
-                <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+              <div class="form-group">
+                {!! Form::label('title', 'Título') !!}
+                {!!
+                  Form::textarea('title', null, [
+                    'rows' =>  2,
+                    'class' => 'form-control',
+                    'placeholder' => 'Describe brevemente de qué quieres que trate el tutorial'
+                  ])
+                !!}
+
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar solicitud</button>
               {!! Form::close() !!}
 
               <hr>
