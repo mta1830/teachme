@@ -38,9 +38,8 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                    @if (! Auth::guest())
                     {!!Html::menu('teachme.menu')!!}
-                    @endif
+
                     @include('layout.login')
 
 

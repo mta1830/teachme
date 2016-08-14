@@ -7,7 +7,7 @@ use TeachMe\Entities\TicketComment;
 
 use Illuminate\Http\Request;
 
-class TicketController extends Controller {
+class TicketsController extends Controller {
 
 	public function latest()
 	{
@@ -56,6 +56,16 @@ class TicketController extends Controller {
 		//Forma básica del ticket sin información del usuario
 		//$comments = TicketComment::where('ticket_id',$id)->orderBy('created_at','DESC')->get();
 		return view('tickets.details',compact('ticket','comments'));
+	}
+
+	public function create()
+	{
+		return view('tickets.create');
+	}
+
+	public function store(Request $request)
+	{
+		dd($request->all());
 	}
 
 }

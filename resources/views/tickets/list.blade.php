@@ -8,7 +8,7 @@
                 <h1>
                     {{-- A través de currentRouteName va a retornarse la ruta de acceso a la página --}}
                     {!! trans(Route::currentRouteName().'_title') !!}
-                    <a href="#" class="btn btn-primary">
+                    <a href="{{ route('tickets.create') }}" class="btn btn-primary">
                         Nueva solicitud
                     </a>
                 </h1>
