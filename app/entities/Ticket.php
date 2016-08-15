@@ -36,6 +36,6 @@ class Ticket extends Model
     public function voters()
     {
       //tiene y pertenece a muchos
-      return $this->belongsToMany(User::class,'ticket_votes');
+      return $this->belongsToMany(User::class,'ticket_votes')->withTimestamps();
     }
 }

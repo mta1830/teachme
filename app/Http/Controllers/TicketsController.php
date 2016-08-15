@@ -57,7 +57,7 @@ class TicketsController extends Controller {
 		//	->get();
 		//Forma básica del ticket sin información del usuario
 		//$comments = TicketComment::where('ticket_id',$id)->orderBy('created_at','DESC')->get();
-		return view('tickets.details',compact('ticket','comments'));
+		return view('tickets.details',compact('ticket'));
 	}
 
 	public function create()

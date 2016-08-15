@@ -80,7 +80,7 @@ return [
     'string'               => 'El campo :attribute debe ser una cadena de caracteres.',
     'timezone'             => 'El :attribute debe ser una zona válida.',
     'unique'               => ':attribute ya ha sido registrado.',
-    'url'                  => 'El formato :attribute es inválido.',
+    'url'                  => 'el formato del :attribute es inválido.',
 
     /*
     |--------------------------------------------------------------------------
@@ -140,6 +140,8 @@ return [
         'time'                  => 'hora',
         'subject'               => 'asunto',
         'message'               => 'mensaje',
+        'link'                  => 'enlace',
+        'comment'               => 'comentario',
     ],
 
 ];
