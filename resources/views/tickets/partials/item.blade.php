@@ -18,8 +18,9 @@
             <span class="votes-count">{{ $ticket->voters()->count() }} votos</span>
             - <span class="comments-count">{{ $ticket->comments()->count() }} comentarios</span>.
         </a>
-
-
-    <p class="date-t"><span class="glyphicon glyphicon-time"></span> {{ $ticket->created_at->format('d/m/Y h:ia') }}</p>
+        <p class="date-t">
+          <span class="glyphicon glyphicon-time"></span> {{ $ticket->created_at->format('d/m/Y h:ia') }}
+          Por {{ $ticket->author->name }}
+        </p>
     </p>
 </div>

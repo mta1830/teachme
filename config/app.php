@@ -152,6 +152,11 @@ return [
 		 #sustituyendo el provider de la clase vendor base
 		 #'Collective\Html\HtmlServiceProvider',
 
+		 /*
+ 		 * Barra de depuración (debug)
+ 		 */
+		 'Barryvdh\Debugbar\ServiceProvider',
+
 	],
 
 	/*
@@ -202,6 +207,8 @@ return [
 
 		'Form' => 'Collective\Html\FormFacade',
     'Html' => 'Collective\Html\HtmlFacade',
+		
+		'Debugbar' => 'Barryvdh\Debugbar\Facade',
 
 	],
 

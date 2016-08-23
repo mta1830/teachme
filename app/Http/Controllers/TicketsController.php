@@ -17,7 +17,7 @@ class TicketsController extends Controller {
 		//$tickets = Ticket::orderBy('created_at','DESC')->get();
 
 		//Hace lo mismo que arriba pero incluye la paginación
-		$tickets = Ticket::orderBy('created_at','DESC')->paginate(10);
+		$tickets = Ticket::orderBy('created_at','DESC')->with('author')->paginate(10);
 
 		return view('tickets.list', compact('tickets'));
 	}
