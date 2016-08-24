@@ -11,13 +11,29 @@ use Illuminate\Support\Facades\Redirect;
 
 class TicketsController extends Controller {
 
+	protected function selectTicketsList()
+	{
+		return Ticket::selectRaw(
+								'tickets.*, '
+								.'(SELECT COUNT(*) FROM ticket_comments WHERE ticket_comments.ticket_id = tickets.id) AS num_comments,'
+								.'(SELECT COUNT(*) FROM ticket_votes WHERE ticket_votes.ticket_id = tickets.id) AS num_votes'
+							);
+	}
+
 	public function latest()
 	{
 		//Trea todas los ticket ordenados por fecha
 		//$tickets = Ticket::orderBy('created_at','DESC')->get();
 
 		//Hace lo mismo que arriba pero incluye la paginación
-		$tickets = Ticket::orderBy('created_at','DESC')->with('author')->paginate(10);
+
+
+		$tickets = $this->selectTicketsList()
+								->orderBy('created_at','DESC')
+								->with('author')
+								->paginate(10);
+
+		// $tickets = Ticket::orderBy('created_at','DESC')->with('author')->paginate(10);
 
 		return view('tickets.list', compact('tickets'));
 	}
@@ -29,18 +45,19 @@ class TicketsController extends Controller {
 
 	public function open()
 	{
-		$tickets = Ticket::where('status','open')
-											->orderBy('created_at','DESC')
-											->paginate(10);
+		$tickets = $this->selectTicketsList()
+								->where('status','open')
+								->orderBy('created_at','DESC')
+								->paginate(10);
 
 		return view('tickets.list', compact('tickets'));
 	}
 
 	public function closed()
 	{
-		$tickets = Ticket::where('status','closed')
-											->orderBy('created_at','DESC')
-											->paginate(10);
+		$tickets = $this->selectTicketsList()
+								->orderBy('created_at','DESC')
+								->paginate(10);
 
 		return view('tickets.list', compact('tickets'));
 	}
