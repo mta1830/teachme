@@ -9,15 +9,15 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Guard;
 use Illuminate\Support\Facades\Redirect;
 
+use TeachMe\Repositories\TicketRepository;
+
 class TicketsController extends Controller {
 
-	protected function selectTicketsList()
+	private $ticketRepository;
+
+	public	function __construct(TicketRepository $ticketRepository)
 	{
-		return Ticket::selectRaw(
-								'tickets.*, '
-								.'(SELECT COUNT(*) FROM ticket_comments WHERE ticket_comments.ticket_id = tickets.id) AS num_comments,'
-								.'(SELECT COUNT(*) FROM ticket_votes WHERE ticket_votes.ticket_id = tickets.id) AS num_votes'
-							);
+		$this->ticketRepository = $ticketRepository;
 	}
 
 	public function latest()
@@ -28,10 +28,7 @@ class TicketsController extends Controller {
 		//Hace lo mismo que arriba pero incluye la paginación
 
 
-		$tickets = $this->selectTicketsList()
-								->orderBy('created_at','DESC')
-								->with('author')
-								->paginate(10);
+		$tickets = $this->ticketRepository->paginateLatest();
 
 		// $tickets = Ticket::orderBy('created_at','DESC')->with('author')->paginate(10);
 
@@ -45,26 +42,21 @@ class TicketsController extends Controller {
 
 	public function open()
 	{
-		$tickets = $this->selectTicketsList()
-								->where('status','open')
-								->orderBy('created_at','DESC')
-								->paginate(10);
+		$tickets = $this->ticketRepository->paginateOpen();
 
 		return view('tickets.list', compact('tickets'));
 	}
 
 	public function closed()
 	{
-		$tickets = $this->selectTicketsList()
-								->orderBy('created_at','DESC')
-								->paginate(10);
+		$tickets = $this->ticketRepository->paginateClosed();;
 
 		return view('tickets.list', compact('tickets'));
 	}
 
 	public function details($id)
 	{
-		$ticket = Ticket::findOrFail($id);
+		$ticket = $this->ticketRepository->FindOrFail($id);;
 
 		//Para hacer un JOIN SQL desde laravel debemos
 		//$comments = TicketComment::select('ticket_comments.*','users.name')
