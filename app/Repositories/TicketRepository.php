@@ -2,7 +2,6 @@
 namespace TeachMe\Repositories;
 
 use TeachMe\Entities\Ticket;
-use TeachMe\Repositories\BaseRepository;
 
 class TicketRepository extends BaseRepository {
 
