@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    var alert = new Alert('#notifications');
+
     $('.btn-vote').click(function (e) {
         e.preventDefault();
 
@@ -17,9 +19,14 @@ $(document).ready(function () {
             //alert
             //update count votes
             ticket.find('.btn-unvote').removeClass('hidden');
+
+            alert.success('Gracias port su voto!');
+
         }).fail(function () {
             //print error message
             button.removeClass('hidden');
+
+            alert.error('Ocurrió un error :(');
         });
     });
 
