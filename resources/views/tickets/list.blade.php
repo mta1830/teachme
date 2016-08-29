@@ -7,14 +7,14 @@
             <div class="row">
                 <h1>
                     {{-- A través de currentRouteName va a retornarse la ruta de acceso a la página --}}
-                    {!! trans(Route::currentRouteName().'_title') !!}
+                    {{ $title = trans(Route::currentRouteName() . '_title') }}
                     <a href="{{ route('tickets.create') }}" class="btn btn-primary">
                         Nueva solicitud
                     </a>
                 </h1>
 
                 <p class="label label-info news">
-                    {{ Lang::choice(Route::currentRouteName().'_total', $tickets->total()) }}
+                    {{ $text_total }}
                     {{--
                     Traer datos necesarios
                     Hay {{ $tickets->total() }} Solicitudes Populares --}}

@@ -144,6 +144,7 @@ return [
 		'TeachMe\Providers\ConfigServiceProvider',
 		'TeachMe\Providers\EventServiceProvider',
 		'TeachMe\Providers\RouteServiceProvider',
+		'TeachMe\Providers\ViewServiceProvider',
 
 		/*
 		 * Personal service providers
@@ -207,7 +208,7 @@ return [
 
 		'Form' => 'Collective\Html\FormFacade',
     'Html' => 'Collective\Html\HtmlFacade',
-		
+
 		'Debugbar' => 'Barryvdh\Debugbar\Facade',
 
 	],
